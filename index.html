@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+    rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="budgetApp.css">
+</head>
+<body>
+    <header>
+        <h1>MONTHLY BUDGET APP</h1>
+        <i>" The best Financial tool"</i>
+    </header>
+   <!-- <div class="savings">
+       <h2>Savings Deduction</h2> 
+    </div> -->
+    <div class="wrapper"> 
+        <div class="section1">
+            <div class="budgetC" style=" background-color: rgba(60, 60, 211,0.8);">
+                <h2>Budget</h2>
+              <h5>Current Income</h5>
+              <h1 class="incomeA" >0</h1>
+              <h5>Savings deduction</h5>
+              <h1 id="saveD">0</h1>
+              <p> at 25% Savings : Income ratio</p>
+              <h5>Freed Up Savings</h5>
+              <h1>#0</h1>
+              <h5>Intrest Payments</h5>
+              <h1>#0</h1>
+              <p>at 10% Intrest rate</p>
+              <h5>balance brought forward</h5>
+              <h1>#0</h1>
+              <p>the surplus of the last month budget</p>
+              <h5 > Total Budget</h5>
+              <h1 id="budget-total" onchange="setBudget()">0</h1>
+            </div>
+            <div class="budgetC" style="background-color: rgba(201, 77, 77, 0.8);">
+                <h2> Income </h2>
+                <div class="text">
+                    <p>this section is where we set the income. it consists of the income makeup list and set new income function</p>
+                </div>
+                <h5>Current Total income</h5>
+                <h1 class="incomeA">0</h1>
+                <h6 class="label"> Set Income</h6>
+                <div class="grid1"><input type="text" id="makeup" name="makeup" placeholder="Add income item">
+                    <input type="text" id="prices" name="prices" placeholder=" Amount"> 
+                </div>
+               <button id="incbtn" style="background-color: red"> Add item to income make up</button>
+               <p id="textI"></p>
+                <h6 class="label">Make Up of  Current income</h6><br>
+                <div id ="main" style="width: 88%;">
+                    
+                </div> 
+               <h6 class="label"> Total Income</h6>
+                <h1 id="incomeB">0</h1>
+                <button class="submit" id="income-btn" style="background-color: red">Set New Income</button>
+            </div>
+            <div class="budgetC" style="background-color: rgba(72, 211, 72, 0.8);">
+                <h2> Savings </h2>
+                <div class="text">
+                    <p>in this section we set the savings percentage and duration.The savings percentage is a percentage 
+                        taken from the income and put in a savings account and the duration is the time in which the money will be loocked up</p>
+                </div>
+                <h5>Current Savings Percentage</h5>
+                <h1 id ="currentS">25</h1>
+                <h5>Time in the savings account</h5>
+                <h1 id="time">Six months</h1>
+                <h6 class="label">Set current savings percentage</h6>
+                <input type="number" name="savings" id="savings" placeholder="Enter new savings percentage">
+                <h6 class="label"> Duration of in the savings  account <br> <span style="font-size: 0.8em; font-weight: 400;">(plz choose one of the options)</span></h6><br>
+                <div id ="choose">
+                    <label>Two year
+                    <input type ="radio" name="years" id="two" value="Two years"></label>
+                    <label>One year
+                    <input type ="radio" name="years" id="one" value="one year"></label>
+                    <label>Six months
+                    <input type ="radio" name="years" id="half" value="Six months"></label>
+                    <label>Three months
+                    <input type ="radio" name="years" id="quarter" value="Three months"></label>
+                </div>
+                <button id="savebtn" style="background-color: green">Set new Savings Percentage</button>
+                <p style="font-size: 13px;"> To check how much is in the savings account <button id="btnA">Click here!</button> </p>
+            </div>
+            
+        </div>
+        
+    <!-- List -->
+      <div class="section2">
+        <div class="budgetC" style="background-color: rgba(247, 165, 57, 0.85);">
+            <h2> Debt management </h2>
+            <div class="text">
+                <p>in this section we set the debt percentage. in this app when expenses is 
+                    greater than budget the deficit is taking care of by debt</p>
+            </div>
+             <h5> This month Debt</h5>
+              <h1 id="debtAmount">0</h1>
+              <h5>last month Debt</h5>
+              <h1>0</h1>
+              <h5>Current Intrest payment</h5>
+              <h1>0</h1>
+              <h5>Current Intrest rate</h5>
+              <h1 id ="current-rate">10</h1>
+              <h6 class="label">Set New intrest rate</h6>
+                <input type="number" name="savings" id="int-rate" placeholder="Enter new intrest rate"><br>
+            <button class="submit" id="ratebtn"  style="background-color: rgb(158, 66, 5)">Set New Intrest rate</button>
+            <div class="intrest">
+                <div class="container">
+                    <div class="principal">
+                         <p >Principal :</p>
+                         <input type="text" id="principalInput">
+                    </div>
+                    <div class="Rate">
+                        <p>Rate :</p>
+                        <input type="text" id="rateInput">
+                    </div>
+                    <div class="Time">
+                        <p>Time(months):</p>
+                        <input type="text" id="timeInput">
+                    </div>
+                </div>
+                <div class ="buttonBox"> <button id="Calculatebn" style="background-color: rgb(158, 66, 5)">Calculate</button></div>
+                <div class="resultBox">
+                    <h5>Principle Amount-<span id="change"></span></h5>
+                    <h5>montly intrest payment- <span id="Sntrest"></span></h5>
+                    <h5>Total Intrest-<span id="Intrest"></span></h5>
+                    <h5>Total Amount to be paid-<span id="Total"></span></h5>
+                </div>
+            </div>
+        </div>
+        <div class="expense-cont">
+            <h2> Expense</h2>
+            <div class="balance">
+                <div class="innerB">
+                <p >Total Budget </p>
+                <p id="currentA">00</p>
+                </div>
+                <div class="innerB">
+                <p>Expenses</p>
+                <p id="costA">00</p>
+                </div>
+                <div class="innerB">
+                <p >Balance</p>
+                <p id="balA">00</p>
+                </div>
+             </div>
+            <div class="inner-exp">
+                <div class="inner2">
+                    <div class="item-cont">
+                        <div class="budgetC" style="background-color: white;">
+                            <h3>Expense </h3>
+                            <p  id="product-title-error">
+                                Values cannot be empty
+                            </p>
+                            <input type="text" name="expense" id="expense" placeholder="Enter item"><br>
+                            <input type="number" name="expenseA" id="expenseA" placeholder="Enter cost of product"><br>
+                            <button  id="button" style="background-color: blueviolet;">Check Amount</button>
+                        </div>
+                        <div class="pop">
+                                <h3>Popular items list</h3>
+                                <div id="main2">
+                                    <div class="sub2" ><span class="item" id="rent">Rent</span> <span class="fa-solid fa-circle-check select-icon"></span> <span class="fa-solid fa-trash delete-icon2"></span></div>
+                                    <div class="sub2"><span  class="item" id="food">Food</span> <span class="fa-solid fa-circle-check select-icon"></span> <span class="fa-solid fa-trash delete-icon2"></span></div>
+                                    <div class="sub2"><span  class="item" id="data">Data</span> <span class="fa-solid fa-circle-check select-icon"></span> <span class="fa-solid fa-trash delete-icon2"></span></div>
+                                </div>
+                                <div class="pop-grid">
+                                    <div><input type ="text" name="pop-item" id="pop-item" placeholder="Add new pop item"></div>
+                                    <div><input type ="number" name="pop-item-price" id="pop-item-price" placeholder="price"></div>
+                                </div>
+                                <button  id="pop-button" style="background-color: blueviolet;">Add to list</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="budgetC" style="background-color: white;">
+                        <h3>Inflation</h3>
+                        <div class="text">
+                            <p>this section we calculate inflation by comparing last month prices with this month prices</p>
+                        </div>
+                        <table>
+                        <tr>
+                            <th>item</th>
+                            <th>previous prices</th>
+                            <th>current prices</th>
+                            <th>Inflation % </th>
+                        </tr>
+                        <tr>
+                            <td>Rent</td>
+                            <td>4000</td>
+                            <td>4000</td>
+                            <td>0%</td>
+                        </tr>
+                        <tr>
+                            <td>Food</td>
+                            <td>10,000</td>
+                            <td>10,000</td>
+                            <td>0%</td>
+                        </tr>
+                        </table>
+                        <h3>Current Inflation rate</h3>
+                        <h1>0%</h1>
+                   </div>
+                </div>
+                <div>
+                    <div class="list">
+                        <h3>Expense List</h3>
+                        <div class="list-container" id="list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="budgetApp.js"></script>
+
+</body>
+</html>
